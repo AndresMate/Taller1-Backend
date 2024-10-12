@@ -7,9 +7,9 @@ const {
     deleteDealer
 } = require('../controllers/controll-dealer')
 
-routes.post('/dealer', createDealer);
-routes.get('/dealer', listDealer);
-routes.put('/dealer', updateDealer);
-routes.delete('/dealer', deleteDealer);
+routes.post('/', createDealer);
+routes.get('/', listDealer);
+routes.put('/', updateDealer);
+routes.delete('/', deleteDealer);
 
 module.exports = routes;

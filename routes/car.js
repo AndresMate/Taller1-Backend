@@ -7,9 +7,9 @@ const {
     deleteCar
 } = require('../controllers/controll-car')
 
-routes.post('/car', createCar);
-routes.get('/car', listCar);
-routes.put('/car', updateCar);
-routes.delete('/car', deleteCar);
+routes.post('/', createCar);
+routes.get('/', listCar);
+routes.put('/', updateCar);
+routes.delete('/', deleteCar);
 
 module.exports = routes;

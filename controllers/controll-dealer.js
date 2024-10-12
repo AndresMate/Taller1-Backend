@@ -13,9 +13,9 @@ module.exports = {
     'listDealer': async (req, res) => {
         try {
             const dealer = await Dealer.find();
-            return res.status(200).send(dealer);
+            return res.status(200).json({state:true, data: dealer})
         } catch (error) {
-            return res.status(400).send({ error: 'Error loading dealers' });
+            return res.status(500).json({state:false, message:error});
         }
     },
     'updateDealer': async (req, res) => {
