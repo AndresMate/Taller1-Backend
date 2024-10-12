@@ -20,6 +20,7 @@ app.use(cors())
 app.use('/docs',swaggerUI.serve,swaggerUI.setup(swaggerSpec))
 
 //middleware
-
+app.use('/dealer',require('./routes/dealer'))
+app.use('/car',require('./routes/car'))
 
 app.listen(app.get('PORT'), () => console.log(`Server Ready at http://localhost:${app.get('PORT')}`))

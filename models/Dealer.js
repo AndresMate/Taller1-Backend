@@ -22,8 +22,8 @@ const SchemaDelivery = new Schema({
 
     cars : [
         {
-            type: mongoose.Schema.Types.ObjectId, 
-            ref: 'Car' 
+            type: Schema.Types.ObjectId,
+            ref: 'car'
         }
     ]
 });
