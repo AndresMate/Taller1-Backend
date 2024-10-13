@@ -32,6 +32,10 @@ La API REST está desplegada en una máquina virtual en Oracle Cloud Infrastruct
 - **URL de Acceso**: [http://158.247.122.111:3000/](http://158.247.122.111:3000/)
 - **Documentación de la API**: [http://158.247.122.111:3000/docs](http://158.247.122.111:3000/docs)
 
+## IMPORTANTE
+### Para poder interactuar con la documentation  con swagger es necesario que el servidor este apuntando a la direccion http://158.247.122.11:3000/ ya que la documentacion esta configurada para esa direccion
+![img.png](img.png)
+
 Este despliegue en la nube asegura que la API esté disponible para los usuarios y permite la escalabilidad y mantenimiento de los servicios ofrecidos.
 
 ## Esquemas de Objetos
