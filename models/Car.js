@@ -1,49 +1,33 @@
-const monggose = require("mongoose");
+const mongoose = require("mongoose");
 
-const {Schema} = monggose;
+const { Schema } = mongoose;
 
 const SchemaCar = new Schema({
-
-    id : {
-        type : String,
-        required : true,
-        unique : true
+    id: {
+        type: String,
+        required: true,
+        unique: true
     },
-
-    model : {
-        type : String,
+    model: {
+        type: String,
         required: true
     },
-
-    plate : {
-        type : String,
-        required : true
+    plate: {
+        type: String,
+        required: true
     },
-
-    department : {
-        type : String,
-        required : true
+    department: {
+        type: String,
+        required: true
     },
-
-    tow : {
-        type : String,
-        required : true
+    town: {  // Corregido de 'tow' a 'town'
+        type: String,
+        required: true
     },
-
-    dealer : {
-        type : Schema.Types.ObjectId,
-        ref : 'dealer'
+    dealer: {
+        type: Schema.Types.ObjectId,
+        ref: 'dealer'
     }
+});
 
-})
-
-module.exports = monggose.model('car', SchemaCar);
-
-
-// Esquema de Carro
-//const carroSchema = new mongoose.Schema({
-//    modelo: String,
-//    placa: String,
-//    departamento: String,
-//    ciudad: String,
-//  });
+module.exports = mongoose.model('car', SchemaCar);
