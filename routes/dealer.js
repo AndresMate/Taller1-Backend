@@ -3,7 +3,8 @@ const {
     createDealer,
     listDealer,
     updateDealer,
-    deleteDealer
+    deleteDealer,
+    findById
 } = require('../controllers/controll-dealer');
 
 /**
@@ -79,7 +80,7 @@ routes.get('/', listDealer);
  *       400:
  *         description: Error al actualizar el dealer
  */
-routes.put('/', updateDealer);
+routes.put('/:id', updateDealer);
 
 /**
  * @swagger
@@ -104,6 +105,34 @@ routes.put('/', updateDealer);
  *       400:
  *         description: Error al eliminar el dealer
  */
-routes.delete('/', deleteDealer);
+routes.delete('/:id', deleteDealer);
+
+/**
+ * @swagger
+ * /dealer/{id}:
+ *   get:
+ *     summary: Obtener un dealer por ID
+ *     tags: [Dealer]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         schema:
+ *           type: string
+ *         required: true
+ *         description: ID del dealer a obtener
+ *     responses:
+ *       200:
+ *         description: Dealer encontrado
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Dealer'
+ *       404:
+ *         description: Dealer no encontrado
+ *       500:
+ *         description: Error del servidor
+ */
+routes.get('/:id', findById);
+
 
 module.exports = routes;

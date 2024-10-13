@@ -3,7 +3,8 @@ const {
     createCar,
     listCar,
     updateCar,
-    deleteCar
+    deleteCar,
+    findById
 } = require('../controllers/controll-car');
 
 /**
@@ -44,7 +45,7 @@ const {
  *       500:
  *         description: Error del servidor
  */
-routes.post('/', createCar);
+routes.post('/:id', createCar);
 
 /**
  * @swagger
@@ -97,7 +98,7 @@ routes.get('/', listCar);
  *       500:
  *         description: Error del servidor
  */
-routes.put('/', updateCar);
+routes.put('/:id', updateCar);
 
 /**
  * @swagger
@@ -120,6 +121,33 @@ routes.put('/', updateCar);
  *       500:
  *         description: Error del servidor
  */
-routes.delete('/', deleteCar);
+routes.delete('/:id', deleteCar);
+
+/**
+ * @swagger
+ * /car/{id}:
+ *   get:
+ *     summary: Obtener un carro por ID
+ *     tags: [Car]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         schema:
+ *           type: string
+ *         required: true
+ *         description: ID del carro a obtener
+ *     responses:
+ *       200:
+ *         description: Carro encontrado
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Car'
+ *       404:
+ *         description: Carro no encontrado
+ *       500:
+ *         description: Error del servidor
+ */
+routes.get('/:id', findById);
 
 module.exports = routes;

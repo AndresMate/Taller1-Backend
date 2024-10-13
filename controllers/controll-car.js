@@ -34,7 +34,7 @@ module.exports = {
         const { id } = req.params;
         const { make, model, year } = req.body;
         try {
-            const car = await Car.findByIdAndUpdate(id, { make, model, year }, { new: true });
+            const car = await Car.findById(id, { make, model, year }, { new: true });
             if (car) {
                 return res.status(200).json({ state: true, data: car });
             } else {
@@ -48,9 +48,23 @@ module.exports = {
     'deleteCar': async (req, res) => {
         const { id } = req.params;
         try {
-            const car = await Car.findByIdAndDelete(id);
+            const car = await Car.findById(id);
             if (car) {
                 return res.status(200).json({ state: true, message: 'Car deleted' });
+            } else {
+                return res.status(404).json({ state: false, message: 'Car not found' });
+            }
+        } catch (error) {
+            return res.status(500).json({ state: false, message: error });
+        }
+    },
+
+    'findById': async (req, res) => {
+        const { id } = req.params;
+        try {
+            const car = await Car.findById(id);
+            if (car) {
+                return res.status(200).json({ state: true, data: car });
             } else {
                 return res.status(404).json({ state: false, message: 'Car not found' });
             }
