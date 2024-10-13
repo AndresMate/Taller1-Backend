@@ -60,7 +60,7 @@ routes.get('/', listDealer);
 
 /**
  * @swagger
- * /dealer:
+ * /dealer/{id}:
  *   put:
  *     summary: Actualizar un dealer
  *     tags: [Dealer]
@@ -84,7 +84,7 @@ routes.put('/:id', updateDealer);
 
 /**
  * @swagger
- * /dealer:
+ * /dealer/{id}:
  *   delete:
  *     summary: Eliminar un dealer
  *     tags: [Dealer]

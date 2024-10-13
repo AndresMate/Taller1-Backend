@@ -46,16 +46,22 @@ module.exports = {
     },
 
     'deleteCar': async (req, res) => {
-        const { id } = req.params;
+        const { id } = req.params; // Obtener el id del carro de los parámetros de la solicitud
+
         try {
-            const car = await Car.findByIdAndDelete(id);
-            if (car) {
-                return res.status(200).json({ state: true, message: 'Car deleted' });
-            } else {
-                return res.status(404).json({ state: false, message: 'Car not found' });
+            // Buscar el carro por ID
+            const car = await Car.findById(id);
+
+            if (!car) {
+                return res.status(404).json({ state: false, message: 'Carro no encontrado' });
             }
+
+            // Eliminar el carro encontrado usando su _id
+            await Car.deleteOne({ _id: id });
+
+            return res.status(200).json({ state: true, message: 'Carro eliminado exitosamente' });
         } catch (error) {
-            return res.status(500).json({ state: false, message: error });
+            return res.status(500).json({ state: false, message: 'Error en el servidor', error });
         }
     },
 

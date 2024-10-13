@@ -5,7 +5,7 @@ module.exports = {
         try {
             const { id, name, area } = req.body;
             const dealer = await Dealer.create({ id, name, area });
-            return res.status(201).json(dealer);
+            return res.status(201).json({state: true, data: dealer});
         } catch (error) {
             return res.status(400).json({ error: 'Error creating new dealer' });
         }

@@ -16,7 +16,7 @@ const {
 
 /**
  * @swagger
- * /car:
+ * /car/{id}:
  *   post:
  *     summary: Crear un nuevo carro
  *     tags: [Car]
@@ -69,7 +69,7 @@ routes.get('/', listCar);
 
 /**
  * @swagger
- * /car:
+ * /car/{id}:
  *   put:
  *     summary: Actualizar un carro
  *     tags: [Car]
@@ -102,7 +102,7 @@ routes.put('/:id', updateCar);
 
 /**
  * @swagger
- * /car:
+ * /car/{id}:
  *   delete:
  *     summary: Eliminar un carro
  *     tags: [Car]
