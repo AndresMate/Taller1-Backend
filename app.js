@@ -17,7 +17,8 @@ const swaggerSpec = require('./swagger')
 app.set('PORT',process.env.PORT || 3000 )
 app.use(express.json())
 app.use(cors())
-app.use('/docs',swaggerUI.serve,swaggerUI.setup(swaggerSpec))
+app.use('/docs', swaggerUI.serve, swaggerUI.setup(swaggerSpec));
+
 
 //middleware
 app.use('/dealer',require('./routes/dealer'))
