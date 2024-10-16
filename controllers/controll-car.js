@@ -56,6 +56,15 @@ module.exports = {
                 return res.status(404).json({ state: false, message: 'Carro no encontrado' });
             }
 
+            // Buscar el dealer asociado al carro
+            const dealer = await Dealer.findById(car.dealer);
+
+            if (dealer) {
+                // Eliminar el carro de la lista de carros del dealer
+                dealer.cars = dealer.cars.filter(carId => carId.toString() !== id);
+                await dealer.save();
+            }
+
             // Eliminar el carro encontrado usando su _id
             await Car.deleteOne({ _id: id });
 
