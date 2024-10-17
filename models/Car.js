@@ -27,6 +27,10 @@ const SchemaCar = new Schema({
     dealer: {
         type: Schema.Types.ObjectId,
         ref: 'dealer'
+    },
+    imag:{
+        type: String,
+        required: true
     }
 });
 

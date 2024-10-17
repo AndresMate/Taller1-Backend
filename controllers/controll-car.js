@@ -32,9 +32,9 @@ module.exports = {
 
     'updateCar': async (req, res) => {
         const { id } = req.params;
-        const { make, model, year } = req.body;
+        const { make, model, year ,imag} = req.body;
         try {
-            const car = await Car.findByIdAndUpdate(id, { make, model, year }, { new: true });
+            const car = await Car.findByIdAndUpdate(id, { make, model, year ,imag}, { new: true });
             if (car) {
                 return res.status(200).json({ state: true, data: car });
             } else {
