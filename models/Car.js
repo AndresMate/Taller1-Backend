@@ -1,12 +1,12 @@
 const mongoose = require("mongoose");
+const AutoIncrement = require('mongoose-sequence')(mongoose);
 
 const { Schema } = mongoose;
 
 const SchemaCar = new Schema({
     id: {
-        type: String,
-        required: true,
-        unique: true
+        type: Number,
+        unique: true,
     },
     model: {
         type: String,
@@ -14,13 +14,14 @@ const SchemaCar = new Schema({
     },
     plate: {
         type: String,
-        required: true
+        required: true,
+        unique: true
     },
     department: {
         type: String,
         required: true
     },
-    town: {  // Corregido de 'tow' a 'town'
+    town: {
         type: String,
         required: true
     },
@@ -29,5 +30,7 @@ const SchemaCar = new Schema({
         ref: 'dealer'
     }
 });
+
+SchemaCar.plugin(AutoIncrement, { inc_field: 'id' });
 
 module.exports = mongoose.model('car', SchemaCar);
