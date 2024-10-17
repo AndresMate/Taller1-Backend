@@ -4,7 +4,8 @@ const {
     listCar,
     updateCar,
     deleteCar,
-    findById
+    findById,
+    findByModel
 } = require('../controllers/controll-car');
 
 /**
@@ -150,4 +151,32 @@ routes.delete('/:id', deleteCar);
  */
 routes.get('/:id', findById);
 
+/**
+ * @swagger
+ * /car/model/{model}:
+ *   get:
+ *     summary: Buscar carros por modelo
+ *     tags: [Car]
+ *     parameters:
+ *       - in: path
+ *         name: model
+ *         schema:
+ *           type: string
+ *         required: true
+ *         description: Modelo del carro a buscar
+ *     responses:
+ *       200:
+ *         description: Lista de carros encontrados
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/Car'
+ *       404:
+ *         description: No se encontraron carros
+ *       500:
+ *         description: Error del servidor
+ */
+routes.get('/model/:model', findByModel);
 module.exports = routes;

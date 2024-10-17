@@ -86,5 +86,18 @@ module.exports = {
         } catch (error) {
             return res.status(500).json({ state: false, message: error });
         }
+    },
+    'findByModel': async (req, res) => {
+        const { model } = req.params;
+        try {
+            const cars = await Car.find({ model: { $regex: model, $options: 'i' } });
+            if (cars.length > 0) {
+                return res.status(200).json({ state: true, data: cars });
+            } else {
+                return res.status(404).json({ state: false, message: 'No cars found' });
+            }
+        } catch (error) {
+            return res.status(500).json({ state: false, message: error });
+        }
     }
 };
