@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-const key = 'Avion'; // Puedes cambiar esto para usar process.env.SECRET
+const key = 'GLE53 Coupe'; // Puedes cambiar esto para usar process.env.SECRET
 
 const authenticateJWT = (req, res, next) => {
     const authHeader = req.headers.authorization;

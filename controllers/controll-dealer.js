@@ -34,14 +34,17 @@ module.exports = {
     },
     'deleteDealer': async (req, res) => {
         const { id } = req.params;
+        console.log(`Received ID: ${id}`);
         try {
             const dealer = await Dealer.findByIdAndDelete(id);
+            console.log(`Dealer found: ${dealer}`);
             if (dealer) {
                 return res.status(200).json({ message: 'Dealer deleted' });
             } else {
                 return res.status(404).json({ error: 'Dealer not found' });
             }
         } catch (error) {
+            console.error(`Error deleting dealer: ${error}`);
             return res.status(400).json({ error: 'Error deleting dealer' });
         }
     },
