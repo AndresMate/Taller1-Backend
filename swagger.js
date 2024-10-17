@@ -60,9 +60,14 @@ const swaggerDefinition = {
                         type: 'string',
                         description: 'ID del dealer asociado al carro',
                         example: 'dealer123'
+                    },
+                    image: {
+                        type: 'string',
+                        description: 'URL de la imagen del carro',
+                        example: 'https://example.com/car-image.jpg'
                     }
                 },
-                required: ['id', 'model', 'plate', 'department', 'town']
+                required: ['id', 'model', 'plate', 'department', 'town', 'dealer', 'image']
             },
             Dealer: {
                 type: 'object',

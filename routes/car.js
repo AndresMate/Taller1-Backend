@@ -22,7 +22,7 @@ const {
  *     summary: Crear un nuevo carro
  *     tags: [Car]
  *     parameters:
- *       - in: query
+ *       - in: path
  *         name: id
  *         schema:
  *           type: string
